@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           home: IndexScreen(id: 0,),
+          // home: LoginPage(),
           navigatorKey: GlobalVariable.navState,
         ));
   }

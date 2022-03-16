@@ -13,7 +13,7 @@ import '../../../base/base_provider.dart';
 import '../provider/add_image_provider.dart';
 
 class AddPhoto extends StatelessWidget {
-  final  int? addId;
+  final int? addId;
 
   const AddPhoto({Key? key, required this.addId}) : super(key: key);
   // Future pickImage(ImageSource source) async {
@@ -25,7 +25,7 @@ class AddPhoto extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseProvider<AddImageProvider>(
       model: AddImageProvider(),
-      onReady: (value) async => await value.init(context),
+      onReady: (value) async => await value.init(context, addId!),
       builder: (context, model, child) {
         return Screenshot(
           controller: model.controller,
@@ -35,33 +35,29 @@ class AddPhoto extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Expanded(
-                    child: PageView(
-                      scrollDirection: Axis.horizontal,
-                      children: List.generate(
-                        model.images!.length,
-                        (index) => buildPhotoRedactor(
-                          model,
-                          index,
-                          // model.images!,
-                        ),
-                      ),
-                    ),
-                  ),
+                      // child: model.images!.length != 0 ?
+                      child: PageView(
+                              scrollDirection: Axis.horizontal,
+                              children: List.generate(
+                                model.images!.length,
+                                (index) => buildPhotoRedactor(
+                                  context,
+                                  model,
+
+                                  addId!,
+                                  index,
+                                  // model.images!,
+                                ),
+                              ),
+                            )
+                          // : buildPhotoRedactor(context, model, addId!, 0),
+                          ),
                   UIHelper.verticalSpace(
                     getProportionateScreenHeight(60),
                   ),
                   ElevatedButton(
                     onPressed: () async {
-                      for (int i = 0; i < model.images!.length; i++) {
-                        final image = await model.capturePhoto(i);
-                        if (image == null) {
-                          log('NULL');
-                          return;
-                        }
-
-                        await model.saveImage(context, image, addId!);
-                        log('Saved');
-                      }
+                      model.sendToServer(context, addId!);
                     },
                     child: const Text(
                       'Add',

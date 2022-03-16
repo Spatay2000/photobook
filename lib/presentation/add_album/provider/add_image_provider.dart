@@ -10,7 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:photoobook/presentation/add_album/ui/add_photo.dart';
+
 import 'package:photoobook/shared/size_config.dart';
 import 'package:screenshot/screenshot.dart';
 
@@ -24,7 +24,7 @@ import '../../index.dart';
 import '../ui/widgets/build_photo.dart';
 
 class AddImageProvider extends BaseBloc {
-  File? mainImage;
+  // File? mainImage;
   FormData? formData;
   int? id;
   AddPhotoService _addPhotoService = AddPhotoService();
@@ -33,10 +33,16 @@ class AddImageProvider extends BaseBloc {
   ScreenshotController controller = ScreenshotController();
   // List<File>? images;
   List<XFile>? images = [];
+  List<XFile>? capturedImages = [];
+  List<MultipartFile>? files = [];
 
-  init(BuildContext context) async {
+  init(BuildContext context, int addId) async {
     SizeConfig().init(context);
-    pickImage();
+    await pickImage();
+    log('LENGTH EPTA: ${images!.length}');
+    for (int i = 0; i < images!.length; i++) {
+      await capturePhoto(context, i, addId);
+    }
   }
 
   Future pickImage() async {
@@ -44,63 +50,42 @@ class AddImageProvider extends BaseBloc {
       images = (await ImagePicker().pickMultiImage());
       // final List<File> images = (await ImagePicker().pickMultiImage())!.cast<File>();
       if (images == null) return;
-      // for (int i = 0; i < images!.length; i++) {
-      //   final imagePermament = await saveImagePermamently(images![i].path);
-      //   this.mainImage = imagePermament;
-      //   images!.add(images![i]);
-      //   // images!.add(imagePermament as XFile);
-      //   notifyListeners();
-      // }
-      final imagePermament = await saveImagePermamently(images!.first.path);
-      this.mainImage = imagePermament;
+
+      // final imagePermament = await saveImagePermamently(images!.first.path);
+      // this.mainImage = imagePermament;
       notifyListeners();
-      log('$mainImage');
+      // log('$mainImage');
     } on PlatformException catch (e) {
       throw Exception('Failed to pick image : $e');
     }
   }
 
-  Future<File> saveImagePermamently(String imagePath) async {
-    final directory = await getApplicationDocumentsDirectory();
-    final name = basename(imagePath);
-    final image = File('${directory.path}/$name');
-    notifyListeners();
-    // return XFile(imagePath).copy(image.path);
-    return File(imagePath).copy(image.path);
-  }
+  // Future<File> saveImagePermamently(String imagePath) async {
+  //   final directory = await getApplicationDocumentsDirectory();
+  //   final name = basename(imagePath);
+  //   final image = File('${directory.path}/$name');
+  //   notifyListeners();
+  //   // return XFile(imagePath).copy(image.path);
+  //   return File(imagePath).copy(image.path);
+  // }
 
-  capturePhoto(int i) async {
-    return await controller.captureFromWidget(
-      buildPhotoRedactor(this, i),
+  capturePhoto(BuildContext context, int i, int addId) async {
+    final bytes = await controller.captureFromWidget(
+      buildPhotoRedactor(context, this, addId, i),
     );
+    print("Files length: " + files!.length.toString());
+    log('Captured');
+    files!.add(MultipartFile.fromBytes(bytes, filename: 'photo.png'));
+    print("DFNUWDBFUJFN: ${files!.first}");
+    notifyListeners();
+    log('Saved');
   }
 
-  Future<String> saveImage(
-      BuildContext context, Uint8List bytes, int addId) async {
-    await [Permission.storage].request();
-    final time = DateTime.now()
-        .toIso8601String()
-        .replaceAll('.', '-')
-        .replaceAll(':', '-');
-    final name = 'screenshot_$time';
-    final result = await ImageGallerySaver.saveImage(bytes, name: name);
-    // log(await MultipartFile.fromFile(images!.first.path).toString());
-
-    print(
-        "EREOREOREOROER: ${images!.map((e) async => await MultipartFile.fromFile(e.path)).toList()}");
-
-    List<MultipartFile> files = [];
-    for (int i = 0; i < images!.length; i++) {
-      files.add(await MultipartFile.fromFile(images![i].path));
-    }
-    print("DFNUWDBFUJFN: ${files.first}");
-    formData = FormData.fromMap({
-      // "file": await MultipartFile.fromFile(images!.first.path)
-
-      // "file": images!.map((e) async => MultipartFile.fromFile(e.path)).toList()
-      "file": files
-    });
-    notifyListeners();
+  Future<void> sendToServer(
+    BuildContext context,
+    int addId,
+  ) async {
+    formData = FormData.fromMap({"file": files!});
 
     Result<void, NetworkError> s =
         await _addPhotoService.addPhoto(addId.toString(), formData!);
@@ -130,6 +115,5 @@ class AddImageProvider extends BaseBloc {
           type: (type) {},
           connectivity: (connectivity) {});
     });
-    return result['filePath'];
   }
 }
