@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:photoobook/presentation/add_album/ui/widgets/build_photo.dart';
 import 'package:photoobook/shared/helper.dart';
 import 'package:photoobook/shared/size_config.dart';
 import 'package:photoobook/shared/theme.dart';
@@ -12,7 +13,7 @@ import '../../../base/base_provider.dart';
 import '../provider/add_image_provider.dart';
 
 class AddPhoto extends StatelessWidget {
-  final int addId;
+  final  int? addId;
 
   const AddPhoto({Key? key, required this.addId}) : super(key: key);
   // Future pickImage(ImageSource source) async {
@@ -58,7 +59,7 @@ class AddPhoto extends StatelessWidget {
                           return;
                         }
 
-                        await model.saveImage(image);
+                        await model.saveImage(context, image, addId!);
                         log('Saved');
                       }
                     },
@@ -74,43 +75,4 @@ class AddPhoto extends StatelessWidget {
       },
     );
   }
-
-  Widget buildPhotoRedactor(
-    AddImageProvider model,
-    int index,
-  ) =>
-      Stack(
-        children: [
-          Center(
-            child: Image.asset(
-              'assets/ramka.jpg',
-            ),
-          ),
-          model.mainImage == null
-              ? Center(
-                  child: InkWell(
-                    onTap: () => model.pickImage(),
-                    child: Container(
-                      width: 300,
-                      height: 200,
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryColor.withOpacity(0),
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    ),
-                  ),
-                )
-              : Center(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(1),
-                    child: Image.file(
-                      File(model.images![index].path),
-                      width: 255,
-                      height: 200,
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                ),
-        ],
-      );
 }

@@ -65,6 +65,7 @@ class AddPhotoAlbumProvider extends BaseBloc {
     Result<dynamic, NetworkError> res =
         await _addAlbumService.addAlbum(titleCtrl.text, descriptionCtrl.text);
     res.when(success: (response) {
+      addAlbumModel = response;
       Navigator.push(
           context,
           MaterialPageRoute(

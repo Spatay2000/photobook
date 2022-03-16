@@ -15,3 +15,14 @@ class AddFileService{
     );
   }
 }
+
+class AddPhotoService{
+  Future<Result<AddFileModel, NetworkError>> addPhoto(
+      String albumId, FormData file ) async {
+    return await NetworkExecuter.execute(
+      route: PlaceHolderClient.addFile(albumId, file),
+      responseType: AddFileModel(),
+    );
+  }
+}
+

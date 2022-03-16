@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         create: (context) => DataProvider(),
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: LoginPage(),
+          home: IndexScreen(id: 0,),
           navigatorKey: GlobalVariable.navState,
         ));
   }
