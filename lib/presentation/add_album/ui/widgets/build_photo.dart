@@ -47,6 +47,7 @@ Widget buildPhotoRedactor(
               await model.pickImage();
               for (int i = 0; i < model.images!.length; i++) {
                 await model.capturePhoto(context, i, addId);
+                //
               }
             },
             child: Container(
