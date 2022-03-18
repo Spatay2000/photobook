@@ -13,3 +13,15 @@ class LoadingView extends StatelessWidget {
     );
   }
 }
+
+class LoadingIndicator extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Container(
+      child: SpinKitThreeInOut(
+        size: MediaQuery.of(context).size.width * 0.1,
+        color: AppColors.primaryColor,
+      )
+    );
+  }
+}

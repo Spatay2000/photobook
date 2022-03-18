@@ -1,13 +1,10 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:photoobook/presentation/add_album/ui/add.dart';
-import 'package:photoobook/presentation/add_album/ui/add_album.dart';
 import 'package:photoobook/presentation/home/ui/home.dart';
 import 'package:photoobook/presentation/profile/ui/profile.dart';
 import 'package:photoobook/presentation/writer/ui/writer.dart';
-import 'package:photoobook/widgets/provider.dart';
 
-import 'package:provider/provider.dart';
 
 import '../shared/theme.dart';
 import 'chat/ui/tech_support.dart';
@@ -54,6 +51,7 @@ class _IndexScreenState extends State<IndexScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: AppColors.primaryColor,

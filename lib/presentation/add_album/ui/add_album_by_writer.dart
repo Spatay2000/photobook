@@ -4,6 +4,7 @@ import 'package:overlay_progress/overlay_progress.dart';
 import 'package:photoobook/app/data/model/add_album_model.dart';
 import 'package:photoobook/presentation/add_album/provider/add_album_provider.dart';
 import 'package:photoobook/presentation/add_album/ui/add_album.dart';
+import 'package:photoobook/shared/size_config.dart';
 import 'package:photoobook/widgets/loading_view.dart';
 
 import '../../../shared/theme.dart';
@@ -26,8 +27,8 @@ class AddAlbumByWriter extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Spacer(
-                flex: 5,
+              const Spacer(
+                flex: 2,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -36,7 +37,7 @@ class AddAlbumByWriter extends StatelessWidget {
                     "Add Album File",
                     style: TextStyle(fontSize: 20.0),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: getProportionateScreenHeight(20)),
                   Container(
                     padding:
                         EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
@@ -61,7 +62,7 @@ class AddAlbumByWriter extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: getProportionateScreenHeight(20)),
                   Container(
                     padding:
                         EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
@@ -90,7 +91,7 @@ class AddAlbumByWriter extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 5),
+              SizedBox(height: getProportionateScreenHeight(10)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,

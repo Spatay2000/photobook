@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:photoobook/shared/size_config.dart';
 import 'package:photoobook/widgets/button.dart';
 
 import '../../../base/base_provider.dart';
@@ -23,17 +24,15 @@ class AddPhotoAlbum extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Spacer(
-              flex: 5,
-            ),
+            const Spacer( flex: 2),
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
+                 const Text(
                   "Add Photo Album ",
                   style: TextStyle(fontSize: 20.0),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: getProportionateScreenHeight(20.0)),
                 Container(
                   padding:
                       EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
@@ -58,7 +57,7 @@ class AddPhotoAlbum extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: getProportionateScreenHeight(20)),
                 Container(
                   padding:
                       EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
@@ -87,7 +86,7 @@ class AddPhotoAlbum extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 5),
+            SizedBox(height: getProportionateScreenHeight(10)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -102,7 +101,7 @@ class AddPhotoAlbum extends StatelessWidget {
                 }),
               ],
             ),
-            Spacer(flex: 5),
+            const Spacer(flex: 5),
           ],
         ),
       ),

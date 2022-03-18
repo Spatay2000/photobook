@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:overlay_progress/overlay_progress.dart';
 import 'package:photoobook/shared/size_config.dart';
 
 import '../../../../shared/theme.dart';
@@ -13,8 +14,9 @@ Widget buildPhotoRedactor(
   AddImageProvider model,
   int addId,
   int index,
-) =>
-    Stack(
+) {
+  SizeConfig().init(context);
+  return  Stack(
       children: [
         model.images!.length == 0
             ? SizedBox()
@@ -34,21 +36,27 @@ Widget buildPhotoRedactor(
                 ),
               ),
         Center(
-          child: Image.asset(
-            'assets/neww.png',
-            width: double.infinity,
-            height: getProportionateScreenHeight(600),
-            fit: BoxFit.fill,
+          child: AspectRatio(
+            aspectRatio:  20 / 14 ,
+            child: Image.asset(
+              model.currentSelectedTemplate,
+              width: double.infinity,
+              height: getProportionateScreenHeight(600),
+              fit: BoxFit.fill,
+            ),
           ),
         ),
+        // SizedBox(height: 10),
+       
         Center(
           child: GestureDetector(
             onTap: () async {
               await model.pickImage();
-              for (int i = 0; i < model.images!.length; i++) {
-                await model.capturePhoto(context, i, addId);
-                //
-              }
+              // for (int i = 0; i < model.images!.length; i++) {
+              //   await model.capturePhoto(context, i, addId);
+              //   //
+              // }
+              model.takeImage(context);
             },
             child: Container(
               width: 300,
@@ -60,5 +68,8 @@ Widget buildPhotoRedactor(
             ),
           ),
         ),
+         
       ],
     );
+
+}

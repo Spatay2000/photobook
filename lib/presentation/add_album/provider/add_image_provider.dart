@@ -12,6 +12,7 @@ import 'package:path/path.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'package:photoobook/shared/size_config.dart';
+import 'package:photoobook/shared/theme.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../../../app/data/services/add_file_service.dart';
@@ -35,14 +36,32 @@ class AddImageProvider extends BaseBloc {
   List<XFile>? images = [];
   List<XFile>? capturedImages = [];
   List<MultipartFile>? files = [];
+  Uint8List? bytes;
+
+  List<String> templates = [
+    TemplateImages.newYear,
+    TemplateImages.marryHoliday,
+  ];
+  String currentSelectedTemplate = TemplateImages.newYear;
+
+  setTemplate(int index) {
+    currentSelectedTemplate = templates[index];
+
+    notifyListeners();
+  }
+
+  clearImages() {
+    images!.clear();
+    files!.clear();
+    notifyListeners();
+  }
 
   init(BuildContext context, int addId) async {
     SizeConfig().init(context);
+    id = addId;
     await pickImage();
     log('LENGTH EPTA: ${images!.length}');
-    for (int i = 0; i < images!.length; i++) {
-      await capturePhoto(context, i, addId);
-    }
+    takeImage(context);
   }
 
   Future pickImage() async {
@@ -50,7 +69,7 @@ class AddImageProvider extends BaseBloc {
       images = (await ImagePicker().pickMultiImage());
       // final List<File> images = (await ImagePicker().pickMultiImage())!.cast<File>();
       if (images == null) return;
-
+      // files!.clear();
       // final imagePermament = await saveImagePermamently(images!.first.path);
       // this.mainImage = imagePermament;
       notifyListeners();
@@ -60,6 +79,16 @@ class AddImageProvider extends BaseBloc {
     }
   }
 
+  takeImage(BuildContext context) async {
+    setIsSendRequest(true);
+    files!.clear();
+    for (int i = 0; i < images!.length; i++) {
+      await capturePhoto(context, i, id!);
+      //
+    }
+    setIsSendRequest(false);
+    notifyListeners();
+  }
   // Future<File> saveImagePermamently(String imagePath) async {
   //   final directory = await getApplicationDocumentsDirectory();
   //   final name = basename(imagePath);
@@ -70,21 +99,29 @@ class AddImageProvider extends BaseBloc {
   // }
 
   capturePhoto(BuildContext context, int i, int addId) async {
-    final bytes = await controller.captureFromWidget(
+    bytes = await controller.captureFromWidget(
       buildPhotoRedactor(context, this, addId, i),
     );
-    print("Files length: " + files!.length.toString());
     log('Captured');
-    files!.add(MultipartFile.fromBytes(bytes, filename: 'photo.png'));
-    print("DFNUWDBFUJFN: ${files!.first}");
     notifyListeners();
+    saveImages();
+  }
+
+  saveImages() {
+    files!.add(MultipartFile.fromBytes(bytes!, filename: 'photo.png'));
+    print("DFNUWDBFUJFN: ${files!.first}");
+    print("Files length: " + files!.length.toString());
+
     log('Saved');
+
+    notifyListeners();
   }
 
   Future<void> sendToServer(
     BuildContext context,
     int addId,
   ) async {
+    log('Length: ${files!.length}');
     formData = FormData.fromMap({"file": files!});
 
     Result<void, NetworkError> s =

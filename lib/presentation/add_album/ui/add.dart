@@ -21,6 +21,7 @@ class AddScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
               child: Scaffold(
+                resizeToAvoidBottomInset: false,
                   backgroundColor: AppColors.whiteColor,
                   body: Column(
                     children: [

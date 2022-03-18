@@ -17,3 +17,10 @@ class SvgImages {
   static const String telegramImages = "assets/images/telegram_icon.svg";
   static const String pdfImages = "assets/images/ic_pdf.svg";
 }
+
+class TemplateImages {
+  static const String newYear = 'assets/neww.png';
+  static const String marryHoliday = 'assets/marry.png';
+  static const String finishedHighSchool = '';
+
+}

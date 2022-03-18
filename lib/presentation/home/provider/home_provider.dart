@@ -11,7 +11,7 @@ import '../../../core/freezed/network_error.dart';
 import '../../../core/freezed/result.dart';
 
 class HomeProvider extends BaseBloc {
-  List<Data>? publishedDataList;
+   List<Data>? publishedDataList;
   PublishedModel? publishedList;
   PublishedAlbumService _historyService = PublishedAlbumService();
   Size? size;
@@ -25,7 +25,7 @@ class HomeProvider extends BaseBloc {
         await _historyService.publishedAlbum();
     h.when(success: (response) {
       publishedList = response;
-      publishedDataList = publishedList!.data!.reversed.toList();
+       publishedDataList = publishedList!.data!.reversed.toList();
       log(publishedList!.data![0].fileStorages!.last.id.toString());
       log(publishedList!.data![0].fileStorages!.first.storageUrl!
           .substring(16));
