@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:photoobook/base/base_provider.dart';
-import 'package:photoobook/presentation/writer/ui/pdf.dart';
+
 import 'package:photoobook/shared/helper.dart';
 
 import '../../../shared/theme.dart';
@@ -41,10 +41,7 @@ class Writer extends StatelessWidget {
                                 trailing: IconButton(
                                   icon: SvgPicture.asset(SvgImages.pdfImages),
                                   onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (_) => PdfPage()));
+                                   
                                   },
                                 ),
                               ),

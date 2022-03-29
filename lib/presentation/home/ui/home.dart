@@ -1,9 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:photoobook/base/base_provider.dart';
 import 'package:photoobook/presentation/home/provider/home_provider.dart';
 
 import 'package:photoobook/shared/size_config.dart';
+import 'package:photoobook/shared/theme.dart';
 
 import '../../../widgets/loading_view.dart';
 
@@ -22,40 +24,53 @@ class HomePage extends StatelessWidget {
                   : model.publishedDataList!.isEmpty
                       ? Center()
                       : Scaffold(
+                          backgroundColor: AppColors.systemBlackColor,
                           body: PageView(
-                          scrollDirection: Axis.vertical,
-                          children: List.generate(
-                            model.publishedDataList!.length,
-                            (index) => Column(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: getProportionateScreenHeight(20),
+                            scrollDirection: Axis.vertical,
+                            children: List.generate(
+                              model.publishedDataList!.length,
+                              (index) => Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical:
+                                          getProportionateScreenHeight(20),
+                                    ),
+                                    child: Text(
+                                        model.publishedDataList![index].title
+                                            .toString(),
+                                        style: TextStyle(
+                                          color: AppColors.systemWhiteColor,
+                                        )),
                                   ),
-                                  child: Text(model
-                                      .publishedDataList![index].title
-                                      .toString()),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: getProportionateScreenHeight(20),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical:
+                                          getProportionateScreenHeight(20),
+                                    ),
+                                    child: Text(
+                                        model.publishedDataList![index]
+                                            .description
+                                            .toString(),
+                                        style: TextStyle(
+                                          color: AppColors.systemWhiteColor,
+                                        )),
                                   ),
-                                  child: Text(model
-                                      .publishedDataList![index].description
-                                      .toString()),
-                                ),
-                                Container(
-                                    child: model.publishedDataList![index]
-                                                .fileStorages!.length !=
-                                            0
-                                        ? CarouselSlider.builder(
-                                            itemCount: model
-                                                .publishedDataList![index]
-                                                .fileStorages!
-                                                .length,
-                                            itemBuilder:
-                                                (context, pindex, _index) {
-                                              return Image.network(
+                                  model.publishedDataList![index].fileStorages!
+                                              .length !=
+                                          0
+                                      ? CarouselSlider.builder(
+                                          itemCount: model
+                                              .publishedDataList![index]
+                                              .fileStorages!
+                                              .length,
+                                          itemBuilder:
+                                              (context, pindex, _index) {
+                                            return Container(
+                                              width: double.maxFinite,
+
+                                              // color: AppColors.systemBlackColor,
+                                              child: Image.network(
                                                 'http://192.168.1.52' +
                                                     model
                                                         .publishedDataList![
@@ -63,35 +78,47 @@ class HomePage extends StatelessWidget {
                                                         .fileStorages![pindex]
                                                         .storageUrl!
                                                         .substring(16),
-                                              );
-                                            },
-                                            options: CarouselOptions(
-                                              height:
-                                                  getProportionateScreenHeight(
-                                                      1000),
-                                              viewportFraction: 1,
-                                              autoPlayAnimationDuration:
-                                                  const Duration(
-                                                      milliseconds: 300),
-                                              autoPlay: true,
-                                            ))
-                                        : Image.network(
-                                            'https://freepikpsd.com/file/2019/10/no-image-png-5-Transparent-Images.png')),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                          'Author:${model.publishedDataList![index].author!.name}'),
-                                    ),
-                                    Text(
-                                        'Date:${model.publishedDataList![index].publishedDate!.substring(0, 10)}'),
-                                  ],
-                                )
-                              ],
+                                                 fit: BoxFit.fitWidth,
+                                              ),
+                                            );
+                                          },
+                                          options: CarouselOptions(
+                                            height:
+                                                getProportionateScreenHeight(
+                                                    1000),
+                                            viewportFraction: 1,
+                                            autoPlayAnimationDuration:
+                                                const Duration(
+                                                    milliseconds: 300),
+                                            autoPlay: true,
+                                          ))
+                                      : Image.network(
+                                          'https://freepikpsd.com/file/2019/10/no-image-png-5-Transparent-Images.png'),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                            'author'.tr() +
+                                                ":" +
+                                                "${model.publishedDataList![index].author!.name!}",
+                                            style: TextStyle(
+                                              color: AppColors.systemWhiteColor,
+                                            )),
+                                      ),
+                                      Text(
+                                          'date'.tr() +
+                                              ":" +
+                                              "${model.publishedDataList![index].publishedDate!.substring(0, 10)}",
+                                          style: TextStyle(
+                                            color: AppColors.systemWhiteColor,
+                                          )),
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
-                          ),
-                        ));
+                          ));
             }));
   }
 }

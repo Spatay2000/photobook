@@ -26,7 +26,7 @@ class AddPhotoAlbumProvider extends BaseBloc {
   AddToDraftService _addToDraftService = AddToDraftService();
   AddByWriterService _addByWriterService = AddByWriterService();
   AddToDraftByWriterService _addToDraftByWriterService =
-      AddToDraftByWriterService();
+  AddToDraftByWriterService();
   AddByWriterModel? writerModel;
   AddAlbumModel? addAlbumModel;
   bool isButtonEnabled = false;

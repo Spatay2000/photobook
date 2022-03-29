@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:overlay_progress/overlay_progress.dart';
@@ -34,8 +35,8 @@ class AddAlbumByWriter extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    "Add Album File",
-                    style: TextStyle(fontSize: 20.0),
+                    "addFileAlbum".tr(),
+                    style: TextStyle(fontSize: 20.0, color:  AppColors.whiteColor),
                   ),
                   SizedBox(height: getProportionateScreenHeight(20)),
                   Container(
@@ -44,12 +45,7 @@ class AddAlbumByWriter extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         color: AppColors.whiteColor,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Color(0xffE5E5E5),
-                              offset: Offset(0, 4),
-                              blurRadius: 1)
-                        ]),
+                        ),
                     width: model.size!.width,
                     child: TextFormField(
                       controller: model.titleCtrl,
@@ -58,7 +54,7 @@ class AddAlbumByWriter extends StatelessWidget {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         labelStyle: TextStyle(color: AppColors.primaryColor),
-                        label: Text('Title'),
+                        label: Text('title'.tr()),
                       ),
                     ),
                   ),
@@ -69,12 +65,7 @@ class AddAlbumByWriter extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         color: AppColors.whiteColor,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Color(0xffE5E5E5),
-                              offset: Offset(0, 4),
-                              blurRadius: 1)
-                        ]),
+                       ),
                     child: TextFormField(
                       maxLength: 200,
                       maxLines: 3,
@@ -85,7 +76,7 @@ class AddAlbumByWriter extends StatelessWidget {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         labelStyle: TextStyle(color: AppColors.primaryColor),
-                        label: Text('Description'),
+                        label: Text('description'.tr()),
                       ),
                     ),
                   ),
@@ -97,11 +88,11 @@ class AddAlbumByWriter extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   custom_button_to_draft(
-                      context, model.size!, "Draft", model.isButtonEnabled, () {
+                      context, model.size!, "draft".tr(), model.isButtonEnabled, () {
                     model.addToDraftByWriter(context);
                   }),
                   custom_button_to_draft(
-                      context, model.size!, "Publish", model.isButtonEnabled,
+                      context, model.size!, "publish".tr(), model.isButtonEnabled,
                       () {
                     model.addByWriter(context);
                   }),

@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:http/retry.dart';
 
 import '../interfaces/base_client_generator.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 
 import '../network_options/network_options.dart';
 

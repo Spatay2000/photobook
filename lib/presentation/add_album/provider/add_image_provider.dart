@@ -1,15 +1,12 @@
 import 'dart:developer';
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
+
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart';
-import 'package:permission_handler/permission_handler.dart';
+
 
 import 'package:photoobook/shared/size_config.dart';
 import 'package:photoobook/shared/theme.dart';
@@ -57,11 +54,13 @@ class AddImageProvider extends BaseBloc {
   }
 
   init(BuildContext context, int addId) async {
+    setLoading(true);
     SizeConfig().init(context);
     id = addId;
     await pickImage();
     log('LENGTH EPTA: ${images!.length}');
     takeImage(context);
+    setLoading(false);
   }
 
   Future pickImage() async {
@@ -83,6 +82,7 @@ class AddImageProvider extends BaseBloc {
     setIsSendRequest(true);
     files!.clear();
     for (int i = 0; i < images!.length; i++) {
+     
       await capturePhoto(context, i, id!);
       //
     }
@@ -100,7 +100,8 @@ class AddImageProvider extends BaseBloc {
 
   capturePhoto(BuildContext context, int i, int addId) async {
     bytes = await controller.captureFromWidget(
-      buildPhotoRedactor(context, this, addId, i),
+       buildPhotoRedactor(context, this, addId, i),
+      // FullScreen(image: images![i]),
     );
     log('Captured');
     notifyListeners();
@@ -116,11 +117,13 @@ class AddImageProvider extends BaseBloc {
 
     notifyListeners();
   }
-
+  
   Future<void> sendToServer(
+     
     BuildContext context,
     int addId,
   ) async {
+     setIsSendRequest(true);
     log('Length: ${files!.length}');
     formData = FormData.fromMap({"file": files!});
 
@@ -128,8 +131,10 @@ class AddImageProvider extends BaseBloc {
         await _addPhotoService.addPhoto(addId.toString(), formData!);
 
     s.when(success: (response) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (_) => IndexScreen(id: 0)));
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => IndexScreen(id: 0)),
+          (route) => false);
     }, failure: (error) {
       error.when(
           request: (request) {
@@ -152,5 +157,6 @@ class AddImageProvider extends BaseBloc {
           type: (type) {},
           connectivity: (connectivity) {});
     });
+     setIsSendRequest(false);
   }
 }

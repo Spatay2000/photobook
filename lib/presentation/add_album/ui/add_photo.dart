@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:overlay_progress/overlay_progress.dart';
@@ -32,11 +33,17 @@ class AddPhoto extends StatelessWidget {
         return Screenshot(
           controller: model.controller,
           child: Scaffold(
+            backgroundColor: AppColors.systemBlackColor,
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerFloat,
             floatingActionButton: Row(
               children: [
+                SizedBox(
+                  width: getProportionateScreenWidth(40),
+                ),
                 FloatingActionButton(
                   backgroundColor: model.isSendRequest
-                      ? AppColors.systemRedColor
+                      ? Colors.blueGrey
                       : AppColors.primaryColor,
                   heroTag: null,
                   onPressed: () {
@@ -46,9 +53,10 @@ class AddPhoto extends StatelessWidget {
                   },
                   child: Icon(Icons.close),
                 ),
+                Spacer(),
                 FloatingActionButton(
                   backgroundColor: model.isSendRequest
-                      ? AppColors.systemRedColor
+                      ? Colors.blueGrey
                       : AppColors.primaryColor,
                   heroTag: null,
                   onPressed: () async {
@@ -57,6 +65,9 @@ class AddPhoto extends StatelessWidget {
                         : model.sendToServer(context, addId!);
                   },
                   child: Icon(Icons.check),
+                ),
+                SizedBox(
+                  width: getProportionateScreenWidth(40),
                 ),
               ],
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,11 +78,24 @@ class AddPhoto extends StatelessWidget {
                 children: [
                   Spacer(),
                   model.isSendRequest
-                      ? LoadingIndicator()
+                      ? Column(
+                          children: [
+                            Text(
+                              'loading'.tr(),
+                              style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.whiteColor),
+                            ),
+                            LoadingIndicator(),
+                          ],
+                        )
                       : Text(
-                          'Succesfull',
+                          'successfully'.tr(),
                           style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.w500),
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.whiteColor),
                         ),
                   Spacer(),
                   Expanded(
@@ -97,7 +121,7 @@ class AddPhoto extends StatelessWidget {
                     getProportionateScreenHeight(60),
                   ),
                   Divider(
-                    color: AppColors.systemBlackColor,
+                    color: AppColors.systemWhiteColor,
                     thickness: 3.0,
                   ),
                   Container(
@@ -128,7 +152,7 @@ class AddPhoto extends StatelessWidget {
                     ),
                   ),
                   Divider(
-                    color: AppColors.textColor,
+                    color: AppColors.systemWhiteColor,
                     thickness: 3.0,
                   ),
                   Spacer(),

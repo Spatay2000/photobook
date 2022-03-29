@@ -5,7 +5,9 @@ ElevatedButton custom_button(
     BuildContext context, Size size, String label, bool isButtonEnabled, func) {
   return ElevatedButton(
     style: ElevatedButton.styleFrom(
-        primary: AppColors.primaryColor, shape: StadiumBorder()),
+      
+      onSurface: AppColors.primaryColor,
+        primary: Color(0xff009de0), shape: StadiumBorder()),
     onPressed: isButtonEnabled
         ? () {
             func();
@@ -28,7 +30,8 @@ ElevatedButton custom_button_to_draft(
     BuildContext context, Size size, String label, bool isButtonEnabled, func) {
   return ElevatedButton(
     style: ElevatedButton.styleFrom(
-        primary: AppColors.primaryColor, shape: StadiumBorder()),
+        onSurface: AppColors.primaryColor,
+        primary: Color(0xff009de0), shape: StadiumBorder()),
     onPressed: isButtonEnabled
         ? () {
             func();

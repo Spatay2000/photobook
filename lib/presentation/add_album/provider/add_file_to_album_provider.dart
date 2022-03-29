@@ -7,11 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:photoobook/app/data/services/add_file_service.dart';
 import 'package:photoobook/presentation/add_album/ui/add_album.dart';
 import 'package:photoobook/presentation/index.dart';
+import 'package:rive/rive.dart';
 
 import '../../../base/base_bloc.dart';
 import '../../../core/freezed/network_error.dart';
 import '../../../core/freezed/result.dart';
 import '../../../navigator_state.dart';
+import '../../../shared/size_config.dart';
 import '../../../utils.dart';
 
 class AddFileAlbumProvider extends BaseBloc {
@@ -24,11 +26,14 @@ class AddFileAlbumProvider extends BaseBloc {
   AddFileService _addFileService = AddFileService();
   bool isDisabledButton = true;
   TextEditingController albumIdCtrl = TextEditingController();
+  RiveAnimationController? riveAnimationController;
   FormData? formData;
 
   init(BuildContext context) {
     setLoading(true);
     size = MediaQuery.of(context).size;
+    SizeConfig().init(context);
+    riveAnimationController = OneShotAnimation('IdleOpend', autoplay: true);
     setLoading(false);
   }
 
@@ -75,8 +80,10 @@ class AddFileAlbumProvider extends BaseBloc {
         await _addFileService.addFile(id.toString(), formData!);
 
     s.when(success: (response) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (_) => IndexScreen(id: 0)));
+     Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => IndexScreen(id: 0)),
+          (route) => false);
     }, failure: (error) {
       error.when(
           request: (request) {
