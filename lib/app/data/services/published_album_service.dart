@@ -13,3 +13,11 @@ class PublishedAlbumService {
         responseType: PublishedModel());
   }
 }
+
+class DraftedAlbumService {
+   Future<Result<PublishedModel, NetworkError>> draftedAlbum() async {
+    return  NetworkExecuter.execute(
+        route: PlaceHolderClient.draftedAlbum(),
+        responseType: PublishedModel());
+  }
+}

@@ -70,6 +70,10 @@ class _$PlaceHolderClientTearOff {
   _PublishedAlbum publishedAlbum() {
     return const _PublishedAlbum();
   }
+
+  _DraftedAlbum draftedAlbum() {
+    return const _DraftedAlbum();
+  }
 }
 
 /// @nodoc
@@ -89,6 +93,7 @@ mixin _$PlaceHolderClient {
     required TResult Function(String title, String description)
         addToDraftByWriter,
     required TResult Function() publishedAlbum,
+    required TResult Function() draftedAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -101,6 +106,7 @@ mixin _$PlaceHolderClient {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -113,6 +119,7 @@ mixin _$PlaceHolderClient {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,6 +133,7 @@ mixin _$PlaceHolderClient {
     required TResult Function(_AddByWriter value) addByWriter,
     required TResult Function(_AddToDraftByWriter value) addToDraftByWriter,
     required TResult Function(_PublishedAlbum value) publishedAlbum,
+    required TResult Function(_DraftedAlbum value) draftedAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -138,6 +146,7 @@ mixin _$PlaceHolderClient {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -150,6 +159,7 @@ mixin _$PlaceHolderClient {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -265,6 +275,7 @@ class _$_Login extends _Login with DiagnosticableTreeMixin {
     required TResult Function(String title, String description)
         addToDraftByWriter,
     required TResult Function() publishedAlbum,
+    required TResult Function() draftedAlbum,
   }) {
     return login(email, password);
   }
@@ -280,6 +291,7 @@ class _$_Login extends _Login with DiagnosticableTreeMixin {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
   }) {
     return login?.call(email, password);
   }
@@ -295,6 +307,7 @@ class _$_Login extends _Login with DiagnosticableTreeMixin {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -314,6 +327,7 @@ class _$_Login extends _Login with DiagnosticableTreeMixin {
     required TResult Function(_AddByWriter value) addByWriter,
     required TResult Function(_AddToDraftByWriter value) addToDraftByWriter,
     required TResult Function(_PublishedAlbum value) publishedAlbum,
+    required TResult Function(_DraftedAlbum value) draftedAlbum,
   }) {
     return login(this);
   }
@@ -329,6 +343,7 @@ class _$_Login extends _Login with DiagnosticableTreeMixin {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
   }) {
     return login?.call(this);
   }
@@ -344,6 +359,7 @@ class _$_Login extends _Login with DiagnosticableTreeMixin {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -468,6 +484,7 @@ class _$_Register extends _Register with DiagnosticableTreeMixin {
     required TResult Function(String title, String description)
         addToDraftByWriter,
     required TResult Function() publishedAlbum,
+    required TResult Function() draftedAlbum,
   }) {
     return register(name, email, password);
   }
@@ -483,6 +500,7 @@ class _$_Register extends _Register with DiagnosticableTreeMixin {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
   }) {
     return register?.call(name, email, password);
   }
@@ -498,6 +516,7 @@ class _$_Register extends _Register with DiagnosticableTreeMixin {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
     required TResult orElse(),
   }) {
     if (register != null) {
@@ -517,6 +536,7 @@ class _$_Register extends _Register with DiagnosticableTreeMixin {
     required TResult Function(_AddByWriter value) addByWriter,
     required TResult Function(_AddToDraftByWriter value) addToDraftByWriter,
     required TResult Function(_PublishedAlbum value) publishedAlbum,
+    required TResult Function(_DraftedAlbum value) draftedAlbum,
   }) {
     return register(this);
   }
@@ -532,6 +552,7 @@ class _$_Register extends _Register with DiagnosticableTreeMixin {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
   }) {
     return register?.call(this);
   }
@@ -547,6 +568,7 @@ class _$_Register extends _Register with DiagnosticableTreeMixin {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
     required TResult orElse(),
   }) {
     if (register != null) {
@@ -663,6 +685,7 @@ class _$_AddAlbum extends _AddAlbum with DiagnosticableTreeMixin {
     required TResult Function(String title, String description)
         addToDraftByWriter,
     required TResult Function() publishedAlbum,
+    required TResult Function() draftedAlbum,
   }) {
     return addAlbum(title, description);
   }
@@ -678,6 +701,7 @@ class _$_AddAlbum extends _AddAlbum with DiagnosticableTreeMixin {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
   }) {
     return addAlbum?.call(title, description);
   }
@@ -693,6 +717,7 @@ class _$_AddAlbum extends _AddAlbum with DiagnosticableTreeMixin {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
     required TResult orElse(),
   }) {
     if (addAlbum != null) {
@@ -712,6 +737,7 @@ class _$_AddAlbum extends _AddAlbum with DiagnosticableTreeMixin {
     required TResult Function(_AddByWriter value) addByWriter,
     required TResult Function(_AddToDraftByWriter value) addToDraftByWriter,
     required TResult Function(_PublishedAlbum value) publishedAlbum,
+    required TResult Function(_DraftedAlbum value) draftedAlbum,
   }) {
     return addAlbum(this);
   }
@@ -727,6 +753,7 @@ class _$_AddAlbum extends _AddAlbum with DiagnosticableTreeMixin {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
   }) {
     return addAlbum?.call(this);
   }
@@ -742,6 +769,7 @@ class _$_AddAlbum extends _AddAlbum with DiagnosticableTreeMixin {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
     required TResult orElse(),
   }) {
     if (addAlbum != null) {
@@ -855,6 +883,7 @@ class _$_AddFile extends _AddFile with DiagnosticableTreeMixin {
     required TResult Function(String title, String description)
         addToDraftByWriter,
     required TResult Function() publishedAlbum,
+    required TResult Function() draftedAlbum,
   }) {
     return addFile(albumId, file);
   }
@@ -870,6 +899,7 @@ class _$_AddFile extends _AddFile with DiagnosticableTreeMixin {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
   }) {
     return addFile?.call(albumId, file);
   }
@@ -885,6 +915,7 @@ class _$_AddFile extends _AddFile with DiagnosticableTreeMixin {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
     required TResult orElse(),
   }) {
     if (addFile != null) {
@@ -904,6 +935,7 @@ class _$_AddFile extends _AddFile with DiagnosticableTreeMixin {
     required TResult Function(_AddByWriter value) addByWriter,
     required TResult Function(_AddToDraftByWriter value) addToDraftByWriter,
     required TResult Function(_PublishedAlbum value) publishedAlbum,
+    required TResult Function(_DraftedAlbum value) draftedAlbum,
   }) {
     return addFile(this);
   }
@@ -919,6 +951,7 @@ class _$_AddFile extends _AddFile with DiagnosticableTreeMixin {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
   }) {
     return addFile?.call(this);
   }
@@ -934,6 +967,7 @@ class _$_AddFile extends _AddFile with DiagnosticableTreeMixin {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
     required TResult orElse(),
   }) {
     if (addFile != null) {
@@ -1050,6 +1084,7 @@ class _$_AddToDraft extends _AddToDraft with DiagnosticableTreeMixin {
     required TResult Function(String title, String description)
         addToDraftByWriter,
     required TResult Function() publishedAlbum,
+    required TResult Function() draftedAlbum,
   }) {
     return addToDraft(title, description);
   }
@@ -1065,6 +1100,7 @@ class _$_AddToDraft extends _AddToDraft with DiagnosticableTreeMixin {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
   }) {
     return addToDraft?.call(title, description);
   }
@@ -1080,6 +1116,7 @@ class _$_AddToDraft extends _AddToDraft with DiagnosticableTreeMixin {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
     required TResult orElse(),
   }) {
     if (addToDraft != null) {
@@ -1099,6 +1136,7 @@ class _$_AddToDraft extends _AddToDraft with DiagnosticableTreeMixin {
     required TResult Function(_AddByWriter value) addByWriter,
     required TResult Function(_AddToDraftByWriter value) addToDraftByWriter,
     required TResult Function(_PublishedAlbum value) publishedAlbum,
+    required TResult Function(_DraftedAlbum value) draftedAlbum,
   }) {
     return addToDraft(this);
   }
@@ -1114,6 +1152,7 @@ class _$_AddToDraft extends _AddToDraft with DiagnosticableTreeMixin {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
   }) {
     return addToDraft?.call(this);
   }
@@ -1129,6 +1168,7 @@ class _$_AddToDraft extends _AddToDraft with DiagnosticableTreeMixin {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
     required TResult orElse(),
   }) {
     if (addToDraft != null) {
@@ -1245,6 +1285,7 @@ class _$_AddByWriter extends _AddByWriter with DiagnosticableTreeMixin {
     required TResult Function(String title, String description)
         addToDraftByWriter,
     required TResult Function() publishedAlbum,
+    required TResult Function() draftedAlbum,
   }) {
     return addByWriter(title, description);
   }
@@ -1260,6 +1301,7 @@ class _$_AddByWriter extends _AddByWriter with DiagnosticableTreeMixin {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
   }) {
     return addByWriter?.call(title, description);
   }
@@ -1275,6 +1317,7 @@ class _$_AddByWriter extends _AddByWriter with DiagnosticableTreeMixin {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
     required TResult orElse(),
   }) {
     if (addByWriter != null) {
@@ -1294,6 +1337,7 @@ class _$_AddByWriter extends _AddByWriter with DiagnosticableTreeMixin {
     required TResult Function(_AddByWriter value) addByWriter,
     required TResult Function(_AddToDraftByWriter value) addToDraftByWriter,
     required TResult Function(_PublishedAlbum value) publishedAlbum,
+    required TResult Function(_DraftedAlbum value) draftedAlbum,
   }) {
     return addByWriter(this);
   }
@@ -1309,6 +1353,7 @@ class _$_AddByWriter extends _AddByWriter with DiagnosticableTreeMixin {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
   }) {
     return addByWriter?.call(this);
   }
@@ -1324,6 +1369,7 @@ class _$_AddByWriter extends _AddByWriter with DiagnosticableTreeMixin {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
     required TResult orElse(),
   }) {
     if (addByWriter != null) {
@@ -1441,6 +1487,7 @@ class _$_AddToDraftByWriter extends _AddToDraftByWriter
     required TResult Function(String title, String description)
         addToDraftByWriter,
     required TResult Function() publishedAlbum,
+    required TResult Function() draftedAlbum,
   }) {
     return addToDraftByWriter(title, description);
   }
@@ -1456,6 +1503,7 @@ class _$_AddToDraftByWriter extends _AddToDraftByWriter
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
   }) {
     return addToDraftByWriter?.call(title, description);
   }
@@ -1471,6 +1519,7 @@ class _$_AddToDraftByWriter extends _AddToDraftByWriter
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
     required TResult orElse(),
   }) {
     if (addToDraftByWriter != null) {
@@ -1490,6 +1539,7 @@ class _$_AddToDraftByWriter extends _AddToDraftByWriter
     required TResult Function(_AddByWriter value) addByWriter,
     required TResult Function(_AddToDraftByWriter value) addToDraftByWriter,
     required TResult Function(_PublishedAlbum value) publishedAlbum,
+    required TResult Function(_DraftedAlbum value) draftedAlbum,
   }) {
     return addToDraftByWriter(this);
   }
@@ -1505,6 +1555,7 @@ class _$_AddToDraftByWriter extends _AddToDraftByWriter
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
   }) {
     return addToDraftByWriter?.call(this);
   }
@@ -1520,6 +1571,7 @@ class _$_AddToDraftByWriter extends _AddToDraftByWriter
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
     required TResult orElse(),
   }) {
     if (addToDraftByWriter != null) {
@@ -1598,6 +1650,7 @@ class _$_PublishedAlbum extends _PublishedAlbum with DiagnosticableTreeMixin {
     required TResult Function(String title, String description)
         addToDraftByWriter,
     required TResult Function() publishedAlbum,
+    required TResult Function() draftedAlbum,
   }) {
     return publishedAlbum();
   }
@@ -1613,6 +1666,7 @@ class _$_PublishedAlbum extends _PublishedAlbum with DiagnosticableTreeMixin {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
   }) {
     return publishedAlbum?.call();
   }
@@ -1628,6 +1682,7 @@ class _$_PublishedAlbum extends _PublishedAlbum with DiagnosticableTreeMixin {
     TResult Function(String title, String description)? addByWriter,
     TResult Function(String title, String description)? addToDraftByWriter,
     TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
     required TResult orElse(),
   }) {
     if (publishedAlbum != null) {
@@ -1647,6 +1702,7 @@ class _$_PublishedAlbum extends _PublishedAlbum with DiagnosticableTreeMixin {
     required TResult Function(_AddByWriter value) addByWriter,
     required TResult Function(_AddToDraftByWriter value) addToDraftByWriter,
     required TResult Function(_PublishedAlbum value) publishedAlbum,
+    required TResult Function(_DraftedAlbum value) draftedAlbum,
   }) {
     return publishedAlbum(this);
   }
@@ -1662,6 +1718,7 @@ class _$_PublishedAlbum extends _PublishedAlbum with DiagnosticableTreeMixin {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
   }) {
     return publishedAlbum?.call(this);
   }
@@ -1677,6 +1734,7 @@ class _$_PublishedAlbum extends _PublishedAlbum with DiagnosticableTreeMixin {
     TResult Function(_AddByWriter value)? addByWriter,
     TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
     TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
     required TResult orElse(),
   }) {
     if (publishedAlbum != null) {
@@ -1689,4 +1747,160 @@ class _$_PublishedAlbum extends _PublishedAlbum with DiagnosticableTreeMixin {
 abstract class _PublishedAlbum extends PlaceHolderClient {
   const factory _PublishedAlbum() = _$_PublishedAlbum;
   const _PublishedAlbum._() : super._();
+}
+
+/// @nodoc
+abstract class _$DraftedAlbumCopyWith<$Res> {
+  factory _$DraftedAlbumCopyWith(
+          _DraftedAlbum value, $Res Function(_DraftedAlbum) then) =
+      __$DraftedAlbumCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$DraftedAlbumCopyWithImpl<$Res>
+    extends _$PlaceHolderClientCopyWithImpl<$Res>
+    implements _$DraftedAlbumCopyWith<$Res> {
+  __$DraftedAlbumCopyWithImpl(
+      _DraftedAlbum _value, $Res Function(_DraftedAlbum) _then)
+      : super(_value, (v) => _then(v as _DraftedAlbum));
+
+  @override
+  _DraftedAlbum get _value => super._value as _DraftedAlbum;
+}
+
+/// @nodoc
+
+class _$_DraftedAlbum extends _DraftedAlbum with DiagnosticableTreeMixin {
+  const _$_DraftedAlbum() : super._();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PlaceHolderClient.draftedAlbum()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PlaceHolderClient.draftedAlbum'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _DraftedAlbum);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) login,
+    required TResult Function(String name, String email, String password)
+        register,
+    required TResult Function(String title, String description) addAlbum,
+    required TResult Function(String albumId, FormData file) addFile,
+    required TResult Function(String title, String description) addToDraft,
+    required TResult Function(String title, String description) addByWriter,
+    required TResult Function(String title, String description)
+        addToDraftByWriter,
+    required TResult Function() publishedAlbum,
+    required TResult Function() draftedAlbum,
+  }) {
+    return draftedAlbum();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function(String name, String email, String password)? register,
+    TResult Function(String title, String description)? addAlbum,
+    TResult Function(String albumId, FormData file)? addFile,
+    TResult Function(String title, String description)? addToDraft,
+    TResult Function(String title, String description)? addByWriter,
+    TResult Function(String title, String description)? addToDraftByWriter,
+    TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
+  }) {
+    return draftedAlbum?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? login,
+    TResult Function(String name, String email, String password)? register,
+    TResult Function(String title, String description)? addAlbum,
+    TResult Function(String albumId, FormData file)? addFile,
+    TResult Function(String title, String description)? addToDraft,
+    TResult Function(String title, String description)? addByWriter,
+    TResult Function(String title, String description)? addToDraftByWriter,
+    TResult Function()? publishedAlbum,
+    TResult Function()? draftedAlbum,
+    required TResult orElse(),
+  }) {
+    if (draftedAlbum != null) {
+      return draftedAlbum();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_Register value) register,
+    required TResult Function(_AddAlbum value) addAlbum,
+    required TResult Function(_AddFile value) addFile,
+    required TResult Function(_AddToDraft value) addToDraft,
+    required TResult Function(_AddByWriter value) addByWriter,
+    required TResult Function(_AddToDraftByWriter value) addToDraftByWriter,
+    required TResult Function(_PublishedAlbum value) publishedAlbum,
+    required TResult Function(_DraftedAlbum value) draftedAlbum,
+  }) {
+    return draftedAlbum(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_Register value)? register,
+    TResult Function(_AddAlbum value)? addAlbum,
+    TResult Function(_AddFile value)? addFile,
+    TResult Function(_AddToDraft value)? addToDraft,
+    TResult Function(_AddByWriter value)? addByWriter,
+    TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
+    TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
+  }) {
+    return draftedAlbum?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_Register value)? register,
+    TResult Function(_AddAlbum value)? addAlbum,
+    TResult Function(_AddFile value)? addFile,
+    TResult Function(_AddToDraft value)? addToDraft,
+    TResult Function(_AddByWriter value)? addByWriter,
+    TResult Function(_AddToDraftByWriter value)? addToDraftByWriter,
+    TResult Function(_PublishedAlbum value)? publishedAlbum,
+    TResult Function(_DraftedAlbum value)? draftedAlbum,
+    required TResult orElse(),
+  }) {
+    if (draftedAlbum != null) {
+      return draftedAlbum(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DraftedAlbum extends PlaceHolderClient {
+  const factory _DraftedAlbum() = _$_DraftedAlbum;
+  const _DraftedAlbum._() : super._();
 }

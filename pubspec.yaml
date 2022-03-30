@@ -57,7 +57,7 @@ dependencies:
   image_gallery_saver: ^1.7.1
   rive: ^0.8.4
   easy_localization: ^3.0.0
-  native_screenshot: ^1.0.0
+  
   overlay_progress:
     git: 
       url: https://github.com/D4vr4n/flutter_overlay_progress.git

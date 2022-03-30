@@ -4,6 +4,8 @@ import 'package:photoobook/presentation/auth/ui/login.dart';
 import 'package:photoobook/presentation/auth/ui/register.dart';
 import 'package:photoobook/presentation/chat/ui/tech_support.dart';
 import 'package:photoobook/presentation/profile/provider/profile_provider.dart';
+import 'package:photoobook/presentation/profile/ui/draft_screen.dart';
+import 'package:photoobook/presentation/profile/ui/favorite_screen.dart';
 import 'package:photoobook/presentation/profile/ui/public_screen.dart';
 import 'package:photoobook/shared/size_config.dart';
 import 'package:photoobook/shared/theme.dart';
@@ -65,8 +67,8 @@ class Profile extends StatelessWidget {
                                       
                                       children: [
                                         PublicScreen(),
-                                        Register(),
-                                        ChatScreen()
+                                        FavoriteScreen(),
+                                        DraftScreen()
                                       ],
                                     ))),
                           )

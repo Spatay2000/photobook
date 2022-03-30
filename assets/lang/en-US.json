@@ -28,6 +28,7 @@
     "main": "Main",
     "release": "Release",
     "chat": "Chat Support",
-    "profile": "Profile"
+    "profile": "Profile",
+    "addFile": "Add File"
 
 }

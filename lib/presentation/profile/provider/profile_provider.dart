@@ -6,9 +6,7 @@ class ProfileProvider extends BaseBloc {
   init(BuildContext context) async {
     setLoading(true);
     SizeConfig().init(context);
-    Future.delayed(Duration(seconds: 2), () {
-      setLoading(false);
-      notifyListeners();
-    });
+    setLoading(false);
+    notifyListeners();
   }
 }

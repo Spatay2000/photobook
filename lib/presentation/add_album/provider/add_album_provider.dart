@@ -12,6 +12,8 @@ import 'package:photoobook/presentation/add_album/ui/add_file_to_album.dart';
 import 'package:photoobook/presentation/add_album/ui/add_photo.dart';
 
 import '../../../app/data/model/add_by_writer_model.dart';
+import '../../../app/data/model/add_to_draft.dart';
+import '../../../app/data/model/add_to_draft_by_writer.dart';
 import '../../../app/data/services/add_by_writer_service.dart';
 import '../../../app/data/services/add_to_draft_by_writer_service.dart';
 import '../../../base/base_bloc.dart';
@@ -26,9 +28,11 @@ class AddPhotoAlbumProvider extends BaseBloc {
   AddToDraftService _addToDraftService = AddToDraftService();
   AddByWriterService _addByWriterService = AddByWriterService();
   AddToDraftByWriterService _addToDraftByWriterService =
-  AddToDraftByWriterService();
+      AddToDraftByWriterService();
   AddByWriterModel? writerModel;
   AddAlbumModel? addAlbumModel;
+  AddToDraftByWriterModel? addToDraftByWriterModel;
+  AddToDraftModel? addToDraftModel;
   bool isButtonEnabled = false;
   Size? size;
   bool isAgreed = false;
@@ -49,10 +53,11 @@ class AddPhotoAlbumProvider extends BaseBloc {
     Result<dynamic, NetworkError> res = await _addToDraftService.addToDraft(
         titleCtrl.text, descriptionCtrl.text);
     res.when(success: (response) {
+       addToDraftModel = response;
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (_) => AddPhoto(addId: addAlbumModel!.data!.id!)));
+              builder: (_) => AddPhoto(addId: addToDraftModel!.data!.id!)));
     }, failure: (error) {
       error.when(
           request: (request) {},
@@ -64,6 +69,7 @@ class AddPhotoAlbumProvider extends BaseBloc {
   addAlbum(BuildContext context) async {
     Result<dynamic, NetworkError> res =
         await _addAlbumService.addAlbum(titleCtrl.text, descriptionCtrl.text);
+
     res.when(success: (response) {
       addAlbumModel = response;
       Navigator.push(
@@ -82,14 +88,13 @@ class AddPhotoAlbumProvider extends BaseBloc {
     Result<dynamic, NetworkError> res = await _addToDraftByWriterService
         .addToDraftByWriter(titleCtrl.text, descriptionCtrl.text);
     res.when(success: (response) {
-      writerModel = response;
-      log(writerModel!.data!.id.toString());
-      log(response.toString());
+       addToDraftByWriterModel = response;
+     
       Navigator.push(
           context,
           MaterialPageRoute(
               builder: (_) =>
-                  AddFileToAlbum(writerId: writerModel!.data!.id!)));
+                  AddFileToAlbum(writerId: addToDraftByWriterModel!.data!.id!)));
     }, failure: (error) {
       error.when(
           request: (request) {},
