@@ -29,6 +29,13 @@
     "release": "Release",
     "chat": "Chat Support",
     "profile": "Profile",
-    "addFile": "Add File"
-
+    "addFile": "Add File",
+    "delete": "Delete",    
+    "order": "Order",
+    "sum": "The amount of your photobook to go out:",
+    "note": "Note this amount is only for a photobook, for a book you need to find out with the help of bot telegrams how to pay.",
+    "payment": "Payment receipt",
+    "phone": "Phone number",
+    "address": "Address",
+    "quantity": "Quantity"
 }

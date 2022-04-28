@@ -1,33 +1,28 @@
-import '../../../core/network/interfaces/base_network_model.dart';
+import 'package:photoobook/core/network/interfaces/base_network_model.dart';
 
-class PublishedModel extends BaseNetworkModel<PublishedModel> {
-  List<Data>? data;
+class DetailModel extends BaseNetworkModel<DetailModel> {
+  Data? data;
   String? status;
 
-  PublishedModel({this.data, this.status});
+  DetailModel({this.data, this.status});
 
-  PublishedModel.fromJson(Map<String, dynamic> json) {
-    if (json['data'] != null) {
-      data = <Data>[];
-      json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
-      });
-    }
+  DetailModel.fromJson(Map<String, dynamic> json) {
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
     status = json['status'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.toJson();
     }
     data['status'] = this.status;
     return data;
   }
 
   @override
-  PublishedModel fromJson(Map<String, dynamic> json) {
-    return PublishedModel.fromJson(json);
+  DetailModel fromJson(Map<String, dynamic> json) {
+    return DetailModel.fromJson(json);
   }
 }
 
@@ -93,10 +88,10 @@ class Data {
 class Author {
   String? email;
   String? name;
-  String? imageUrl;
+  Null? imageUrl;
   bool? emailVerified;
   String? provider;
-  int? providerId;
+  Null? providerId;
 
   Author(
       {this.email,

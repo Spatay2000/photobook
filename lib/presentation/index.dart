@@ -28,17 +28,10 @@ class _IndexScreenState extends State<IndexScreen> {
   late AnimationController _animationController;
   late Animation<double> animation;
   late CurvedAnimation curve;
-  final menuStates = [
-    HomePage(),
-    Writer(),
-    AddScreen(),
-    ChatScreen(),
-    Profile()
-  ];
+  final menuStates = [HomePage(), AddScreen(), ChatScreen(), Profile()];
 
   final iconList = <IconData>[
     Icons.home,
-    Icons.book,
     Icons.add_a_photo,
     Icons.chat,
     Icons.person,
@@ -51,7 +44,7 @@ class _IndexScreenState extends State<IndexScreen> {
     // "chat".tr(),
     // "profile".tr(),
     "main",
-    "Book",
+
     'release',
     "chat",
     "profile"
@@ -69,7 +62,7 @@ class _IndexScreenState extends State<IndexScreen> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           actions: [
-            bottomNavIndex == 4
+            bottomNavIndex == 3
                 ? IconButton(
                     icon: Icon(
                       Icons.menu,
@@ -145,7 +138,8 @@ class _IndexScreenState extends State<IndexScreen> {
                                                       getProportionateScreenWidth(
                                                           32.0)),
                                               decoration: BoxDecoration(
-                                                color: AppColors.whiteColor.withOpacity(0),
+                                                  color: AppColors.whiteColor
+                                                      .withOpacity(0),
                                                   border: Border.all(),
                                                   borderRadius:
                                                       BorderRadius.circular(
@@ -161,7 +155,7 @@ class _IndexScreenState extends State<IndexScreen> {
                                           ),
                                           Spacer(),
                                           InkWell(
-                                             onTap: () async {
+                                            onTap: () async {
                                               context.setLocale(
                                                   Locale('ru', 'RU'));
 
@@ -177,9 +171,10 @@ class _IndexScreenState extends State<IndexScreen> {
                                                           22.0)),
                                               decoration: BoxDecoration(
                                                   border: Border.all(),
-                                                  borderRadius: BorderRadius.circular(
-                                                      getProportionateScreenHeight(
-                                                          12.0))),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          getProportionateScreenHeight(
+                                                              12.0))),
                                               child: Text(
                                                 'RU',
                                                 style: TextStyle(
@@ -190,7 +185,7 @@ class _IndexScreenState extends State<IndexScreen> {
                                           ),
                                           Spacer(),
                                           InkWell(
-                                             onTap: () async {
+                                            onTap: () async {
                                               context.setLocale(
                                                   Locale('en', 'US'));
 
@@ -206,9 +201,10 @@ class _IndexScreenState extends State<IndexScreen> {
                                                           22.0)),
                                               decoration: BoxDecoration(
                                                   border: Border.all(),
-                                                  borderRadius: BorderRadius.circular(
-                                                      getProportionateScreenHeight(
-                                                          12.0))),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          getProportionateScreenHeight(
+                                                              12.0))),
                                               child: Text(
                                                 'ENG',
                                                 style: TextStyle(

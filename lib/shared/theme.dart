@@ -16,12 +16,13 @@ class SvgImages {
   static const String googleImages = "assets/images/google.svg";
   static const String telegramImages = "assets/images/telegram_icon.svg";
   static const String pdfImages = "assets/images/ic_pdf.svg";
-  static const String avaImages = "assets/images/avatar.svg";
+  static const String avaManImages = "assets/images/avatar.svg";
+  static const String avaLadyImages =  "assets/images/lady.svg";
   
 }
 
 class TemplateImages {
   static const String newYear = 'assets/neww.png';
   static const String marryHoliday = 'assets/marry.png';
-  static const String finishedHighSchool = '';
+  static const String pdfImages = 'assets/pdf.png';
 }

@@ -49,3 +49,27 @@ ElevatedButton custom_button_to_draft(
     ),
   );
 }
+ElevatedButton custom_button_to_delete(
+    BuildContext context, Size size, String label, bool isButtonEnabled, func) {
+  return ElevatedButton(
+    style: ElevatedButton.styleFrom(
+        onSurface: AppColors.systemRedColor,
+        primary: AppColors.systemRedColor, shape: StadiumBorder()),
+    onPressed: isButtonEnabled
+        ? () {
+            func();
+          }
+        : null,
+    child: Container(
+    
+      width: size.width * 0.35,
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: Text(
+        "$label",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            fontSize: 14, fontFamily: 'Manrope', fontWeight: FontWeight.w700),
+      ),
+    ),
+  );
+}

@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserData {
+  void chooseAvatar(int index) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setInt('avatar', index);
+    log("${prefs.getInt('avatar')}");
+  }
+
   void setToken(String? token) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString('token', token!);
@@ -19,6 +25,11 @@ class UserData {
     final prefs = await SharedPreferences.getInstance();
     final value = prefs.getString('token');
     return value ?? "";
+  }
+  Future<int> getAvatarId() async {
+    final prefs = await SharedPreferences.getInstance();
+    final value = prefs.getInt('avatar');
+    return value ?? 0;
   }
 
   void setUsername(String? username) async {

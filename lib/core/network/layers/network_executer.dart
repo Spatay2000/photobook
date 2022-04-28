@@ -70,7 +70,7 @@ class NetworkExecuter {
                 type: CoolAlertType.error,
                 title: "Ошибка!",
                 text: error.response!.data['error']);
-        // log('Suka');
+       
         break;
       case 404:
         // showAlert(GlobalVariable.navState.currentContext!, error);

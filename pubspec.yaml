@@ -57,6 +57,7 @@ dependencies:
   image_gallery_saver: ^1.7.1
   rive: ^0.8.4
   easy_localization: ^3.0.0
+  flutter_pdfview: ^1.2.2
   
   overlay_progress:
     git: 

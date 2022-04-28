@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,9 @@ import '../../../base/base_bloc.dart';
 import '../../../core/freezed/network_error.dart';
 import '../../../core/freezed/result.dart';
 import '../../../shared/size_config.dart';
+import '../../home/provider/home_provider.dart';
+import '../../home/ui/pdf_viewer.dart';
+import '../ui/detailed_publish.dart';
 
 class DraftProvider extends BaseBloc {
    List<Data>? publishedDataList;
@@ -47,4 +51,29 @@ class DraftProvider extends BaseBloc {
     });
     setLoading(false);
   }
+   openPDF(BuildContext context, int index) async {
+    setIsSendRequest(true);
+    final url = 'http://192.168.1.52' +
+        publishedDataList![index]
+            .fileStorages![index]
+            .storageUrl!
+            .substring(16);
+    log(url);
+    File file = await PDFApi().loadNetwork(url);
+    setIsSendRequest(false);
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => PDFViewerScreen(file: file),
+      ),
+    );
+    
+  }
+  navigateToDetailScreen(BuildContext context, int id) async {
+    
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (_) =>
+                  DetailPublish(addId: id)));
+    }
 }

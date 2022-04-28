@@ -7,14 +7,16 @@ class BaseProvider<T extends ChangeNotifier> extends StatefulWidget {
   final T model;
   final Function(T)? onReady;
   final Function(T)? onDispose;
+  final Function(T)? onDidChangeDependencies;
 
-  BaseProvider(
-      {required this.builder,
-      required this.model,
-      this.child,
-      this.onReady,
-      this.onDispose})
-      : super();
+  BaseProvider({
+    required this.builder,
+    required this.model,
+    this.child,
+    this.onReady,
+    this.onDispose,
+    this.onDidChangeDependencies,
+  }) : super();
   _BaseProviderState<T> createState() => _BaseProviderState<T>();
 }
 
@@ -33,6 +35,12 @@ class _BaseProviderState<T extends ChangeNotifier>
   void dispose() {
     if (widget.onDispose != null) widget.onDispose!(model);
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (widget.onDidChangeDependencies != null) widget.onDidChangeDependencies!(model);
+    super.didChangeDependencies();
   }
 
   @override

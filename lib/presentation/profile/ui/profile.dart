@@ -30,7 +30,7 @@ class Profile extends StatelessWidget {
                       body: Column(
                         children: [
                           Center(
-                            child: SvgPicture.asset(SvgImages.avaImages,
+                            child: SvgPicture.asset(model.userData.getAvatarId() == 0 ?  SvgImages.avaManImages : SvgImages.avaLadyImages,
                                 width: getProportionateScreenWidth(200),
                                 height: getProportionateScreenHeight(250)),
                           ),

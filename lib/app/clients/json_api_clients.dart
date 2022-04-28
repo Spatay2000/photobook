@@ -27,6 +27,8 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
       String title, String description) = _AddToDraftByWriter;
   const factory PlaceHolderClient.publishedAlbum() = _PublishedAlbum;
   const factory PlaceHolderClient.draftedAlbum() = _DraftedAlbum;
+  const factory PlaceHolderClient.albumDetail(int albumId) = _AlbumDetails;
+  const factory PlaceHolderClient.deleteAlbum(int albumId) = _DeleteAlbum;
 
   @override
   String get baseURL => "http://192.168.1.52:8081/";
@@ -42,17 +44,18 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
   @override
   String get path {
     return this.when<String>(
-      login: (String email, String password) => 'auth/login',
-      register: (String name, String email, String password) => 'auth/signup',
-      addAlbum: (String title, String description) => 'album/publish',
-      addFile: (String albumId, FormData file) =>
-          'album/upload-files?albumId=$albumId',
-      addToDraft: (String title, String description) => 'album/draft',
-      addByWriter: (String title, String description) => 'album/publish',
-      addToDraftByWriter: (String title, String description) => 'album/draft',
-      publishedAlbum: () => 'album/read/filter?albumStatus=PUBLISHED',
-      draftedAlbum: ()=> 'album/read/filter?albumStatus=DRAFT',
-    );
+        login: (String email, String password) => 'auth/login',
+        register: (String name, String email, String password) => 'auth/signup',
+        addAlbum: (String title, String description) => 'album/publish',
+        addFile: (String albumId, FormData file) =>
+            'album/upload-files?albumId=$albumId',
+        addToDraft: (String title, String description) => 'album/draft',
+        addByWriter: (String title, String description) => 'album/publish',
+        addToDraftByWriter: (String title, String description) => 'album/draft',
+        publishedAlbum: () => 'album/read/filter?albumStatus=PUBLISHED',
+        draftedAlbum: () => 'album/read/filter?albumStatus=DRAFT',
+        albumDetail: (int albumId) => 'album/read/$albumId',
+        deleteAlbum: (int albumId) => 'album/delete/$albumId');
   }
 
   @override
@@ -66,7 +69,7 @@ class PlaceHolderClient extends BaseClientGenerator with _$PlaceHolderClient {
       addToDraft: (String title, String description) => 'POST',
       addByWriter: (String title, String description) => 'POST',
       addToDraftByWriter: (String title, String description) => 'POST',
-      
+      deleteAlbum: (int albumId) => 'DELETE',
     );
   }
 
